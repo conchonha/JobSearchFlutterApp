@@ -1,0 +1,56 @@
+import 'package:flutter/material.dart';
+
+class AppColor {
+  static const hFFFFFF = Color(0xFFFFFFFF);
+  static const h1885FF = Color(0xFF1885FF);
+  static const h5E5E5E = Color(0xFF5E5E5E);
+  static const h44A1FF = Color(0xFF44A1FF);
+  static const hB8B8B8 = Color(0xFFB8B8B8);
+  static const hD7443E = Color(0xFFD7443E);
+  static const h06102B = Color(0xFF06102B);
+  static const h059669 = Color(0xFF059669);
+  static const h334155 = Color(0xFF334155);
+  static const h94A3B8 = Color(0xFF94A3B8);
+  static const h64748B = Color(0xFF64748B);
+  static const he0e0eb = Color(0xFFe0e0eb);
+  static const h00cccc = Color(0xFF00cccc);
+  static const hcc0000 = Color(0xFFcc0000);
+  static const color_1E293B = Color(0xff1e293b);
+  static const colorCBD5E1 = Color(0xffcbd5e1);
+  static const color94A3B8 = Color(0xff94a3b8);
+  static const color1D4ED8 = Color(0xff1d4ed8);
+  static const colorE2E8F0 = Color(0xffe2e8f0);
+  static const colorF8FAFC = Color(0xfff8fafc);
+  static const backgroundcolor = Colors.deepPurple;
+  static const themeColor = Color(0xfff5a623);
+  static const  _primaryColor = Color(0xffffffff);
+  static const whiteColor = Color(0xFFFFFFFF);
+  static const whiteColor2 = Color(0xFFF8F8F8);
+  static const blackColor = Color(0xFF464646);
+  static const blackColor2 = Color(0xFF707070);
+  static const blackColor3 = Color(0xFF000000);
+  static const redColor = Color(0xFF3B1E1E);
+  static const greyColor = Color(0xffaeaeae);
+  static const greyColor2 = Color(0xffE8E8E8);
+  static const greyColor3 = Color(0xFFF3F3F3);
+  static const greyColor4 = Color(0xFF747775);
+  static const grayColor = Color(0xFFC4C4C4);
+  static const grayColor2 = Color(0xFFEFEFEF);
+  static const grayColor3 = Color(0xFFECECEC);
+  static const grayColor4 = Color(0xFFB5ADAD);
+  static const grayColor5 = Color(0xFFF6F6F6);
+  static const grayColor6 = Color(0xFF858585);
+  static const grayColor7 = Color(0xFF959595);
+  static const grayColor8 = Color(0xFFd4d7d9);
+  static const grayColor9 = Color(0xFFbcc2c7);
+  static const greenColor = Color(0xFF3DC4AE);
+  static const greenColor2 = Color(0xFF43D8CE);
+  static const greenColor3 = Color(0xFFF2FFFD);
+  static const pinkColor = Color(0xFFEC82DC);
+  static const pinkColor2 = Color(0xFFEB77C5);
+  static const pinkColor3 = Color(0xFFFF88A8);
+  static const yellowColor = Color(0xFFF9E000);
+  static const orangeColor1 = Color(0xFFf7763f);
+
+  static Color get primaryColor => _primaryColor.withAlpha(90);
+}
