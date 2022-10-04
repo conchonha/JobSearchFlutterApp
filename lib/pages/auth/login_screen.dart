@@ -53,7 +53,7 @@ class LogInScreen extends StatelessWidget {
                           Text(
                             'Hi Login',
                             style:
-                            AppStyle.title?.copyWith(color: Colors.white),
+                                AppStyle.title?.copyWith(color: Colors.white),
                           )
                         ],
                       ),
@@ -66,173 +66,173 @@ class LogInScreen extends StatelessWidget {
               ),
               Expanded(
                   child: Center(
-                    child: SingleChildScrollView(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Consumer<UserViewModel>(
-                            builder: (_, model, child) => Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: AppDP.dp_30),
-                              child: Form(
-                                key: model.formKey,
-                                child: Column(
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Consumer<UserViewModel>(
+                        builder: (_, model, child) => Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: AppDP.dp_30),
+                          child: Form(
+                            key: model.formKey,
+                            child: Column(
+                              children: <Widget>[
+                                SizedBox(
+                                  height: AppDP.dp_40,
+                                  child: TextFormField(
+                                    controller: model.nameController,
+                                    validator: model.validateUserName,
+                                    keyboardType: TextInputType.emailAddress,
+                                    style: AppStyle.small,
+                                    decoration:
+                                        AppStyle.textFielInputDecoration(
+                                            "Tên Đăng Nhập"),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: AppDP.dp_30,
+                                ),
+                                Stack(
+                                  alignment: Alignment.centerRight,
                                   children: <Widget>[
                                     SizedBox(
                                       height: AppDP.dp_40,
                                       child: TextFormField(
-                                        controller: model.nameController,
-                                        validator: model.validateUserName,
-                                        keyboardType: TextInputType.emailAddress,
+                                        textAlignVertical:
+                                            TextAlignVertical.center,
+                                        validator: model.validatePassword,
+                                        controller: model.passController,
+                                        keyboardType: TextInputType.text,
+                                        obscureText: !model.checkShowPass,
                                         style: AppStyle.small,
                                         decoration:
-                                        AppStyle.textFielInputDecoration(
-                                            "Tên Đăng Nhập"),
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: AppDP.dp_30,
-                                    ),
-                                    Stack(
-                                      alignment: Alignment.centerRight,
-                                      children: <Widget>[
-                                        SizedBox(
-                                          height: AppDP.dp_40,
-                                          child: TextFormField(
-                                            textAlignVertical:
-                                            TextAlignVertical.center,
-                                            validator: model.validatePassword,
-                                            controller: model.passController,
-                                            keyboardType: TextInputType.text,
-                                            obscureText: !model.checkShowPass,
-                                            style: AppStyle.small,
-                                            decoration:
                                             AppStyle.textFielInputDecoration(
                                                 "Mật khẩu"),
-                                          ),
-                                        ),
-                                        IconButton(
-                                          icon: Icon(
-                                            model.checkShowPass
-                                                ? Icons.visibility_off
-                                                : Icons.visibility,
-                                            size: AppDP.dp_16,
-                                          ),
-                                          onPressed: () {
-                                            model.checkShowPassWord();
-                                          },
-                                        )
-                                      ],
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: AppDP.dp_0, top: AppDP.dp_20),
-                                      child: Row(
-                                        children: <Widget>[
-                                          Checkbox(
-                                            checkColor: Colors.white,
-                                            activeColor: Colors.deepPurple,
-                                            hoverColor: Colors.deepPurple,
-                                            value: model.isPrefsLogin,
-                                            onChanged: model.checkSaveUser,
-                                          ),
-                                          Text(
-                                            "Nhớ tài khoản",
-                                            style: AppStyle.small,
-                                          )
-                                        ],
                                       ),
                                     ),
+                                    IconButton(
+                                      icon: Icon(
+                                        model.checkShowPass
+                                            ? Icons.visibility_off
+                                            : Icons.visibility,
+                                        size: AppDP.dp_16,
+                                      ),
+                                      onPressed: () {
+                                        model.checkShowPassWord();
+                                      },
+                                    )
                                   ],
                                 ),
-                              ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: AppDP.dp_0, top: AppDP.dp_20),
+                                  child: Row(
+                                    children: <Widget>[
+                                      Checkbox(
+                                        checkColor: Colors.white,
+                                        activeColor: Colors.deepPurple,
+                                        hoverColor: Colors.deepPurple,
+                                        value: model.isPrefsLogin,
+                                        onChanged: model.checkSaveUser,
+                                      ),
+                                      Text(
+                                        "Nhớ tài khoản",
+                                        style: AppStyle.small,
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                          const SizedBox(
-                            height: AppSP.sp_30,
-                          ),
-                          Container(
-                            margin: const EdgeInsets.only(
-                                left: AppDP.dp_30, right: AppDP.dp_30),
-                            height: AppDP.dp_40,
-                            child: ClipRRect(
-                              borderRadius: const BorderRadius.all(
-                                  Radius.circular(AppDP.dp_30)),
-                              child: MaterialButton(
-                                color: Colors.deepPurple,
-                                onPressed: () {
-                                  //--------------------- IS LOGIN
-                                },
-                                elevation: AppDP.dp_5,
-                                height: AppDP.dp_50,
-                                hoverColor: Colors.blue,
-                                minWidth: MediaQuery.of(context).size.width * 0.9,
-                                child: Center(
-                                  child: Text(
-                                    "Login",
-                                    style: AppStyle.small
-                                        ?.copyWith(color: Colors.white),
-                                  ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: AppSP.sp_30,
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(
+                            left: AppDP.dp_30, right: AppDP.dp_30),
+                        height: AppDP.dp_40,
+                        child: ClipRRect(
+                          borderRadius: const BorderRadius.all(
+                              Radius.circular(AppDP.dp_30)),
+                          child: Consumer<UserViewModel>(
+                            builder: (_, vm, child) => MaterialButton(
+                              color: Colors.deepPurple,
+                              onPressed: vm.login,
+                              elevation: AppDP.dp_5,
+                              height: AppDP.dp_50,
+                              hoverColor: Colors.blue,
+                              minWidth: MediaQuery.of(context).size.width * 0.9,
+                              child: Center(
+                                child: Text(
+                                  "Login",
+                                  style: AppStyle.small
+                                      ?.copyWith(color: Colors.white),
                                 ),
                               ),
                             ),
                           ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: AppDP.dp_50,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Image.asset(
+                            Constants.icon_facebook,
+                            width: AppDP.dp_25,
+                            height: AppDP.dp_25,
+                          ),
                           const SizedBox(
+                            width: AppDP.dp_20,
+                          ),
+                          Container(
+                            width: AppDP.dp_1,
                             height: AppDP.dp_50,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Image.asset(
-                                Constants.icon_facebook,
-                                width: AppDP.dp_25,
-                                height: AppDP.dp_25,
-                              ),
-                              const SizedBox(
-                                width: AppDP.dp_20,
-                              ),
-                              Container(
-                                width: AppDP.dp_1,
-                                height: AppDP.dp_50,
-                                color: Colors.black,
-                              ),
-                              const SizedBox(
-                                width: AppDP.dp_20,
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  //----------------------------------Sign In
-                                },
-                                child: Image.asset(
-                                  Constants.icon_google,
-                                  width: AppDP.dp_25,
-                                  height: AppDP.dp_25,
-                                  color: Colors.red,
-                                  fit: BoxFit.fill,
-                                ),
-                              ),
-                            ],
+                            color: Colors.black,
                           ),
                           const SizedBox(
-                            height: AppDP.dp_30,
+                            width: AppDP.dp_20,
                           ),
-                          Container(
-                              alignment: Alignment.bottomCenter,
-                              child: Consumer<UserViewModel>(
-                                builder: (_,model,child) => GestureDetector(
-                                  onTap: model.onTapRegister,
-                                  child: Text(
-                                    "Register",
-                                    style: AppStyle.title
-                                        ?.copyWith(color: AppColor.backgroundcolor),
-                                  ),
-                                ),
-                              ))
+                          GestureDetector(
+                            onTap: () {
+                              //----------------------------------Sign In
+                            },
+                            child: Image.asset(
+                              Constants.icon_google,
+                              width: AppDP.dp_25,
+                              height: AppDP.dp_25,
+                              color: Colors.red,
+                              fit: BoxFit.fill,
+                            ),
+                          ),
                         ],
                       ),
-                    ),
-                  ))
+                      const SizedBox(
+                        height: AppDP.dp_30,
+                      ),
+                      Container(
+                          alignment: Alignment.bottomCenter,
+                          child: Consumer<UserViewModel>(
+                            builder: (_, model, child) => GestureDetector(
+                              onTap: model.onTapRegister,
+                              child: Text(
+                                "Register",
+                                style: AppStyle.title
+                                    ?.copyWith(color: AppColor.backgroundcolor),
+                              ),
+                            ),
+                          ))
+                    ],
+                  ),
+                ),
+              ))
             ],
           ),
         ));

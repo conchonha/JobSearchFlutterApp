@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_library/res/dimens.dart';
 import 'package:flutter_library/utils/navigator_services.dart';
 import 'package:oktoast/oktoast.dart';
-import 'package:untitled_folder/pages/introduce_page/introduce_page.dart';
+import 'package:untitled_folder/pages/introduce/introduce_screen.dart';
 import 'package:untitled_folder/res/app_color.dart';
 import 'package:untitled_folder/res/app_fonts.dart';
 import 'package:untitled_folder/utils/routers.dart' as router;

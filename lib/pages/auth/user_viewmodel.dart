@@ -43,4 +43,8 @@ class UserViewModel extends BaseVM{
   onBackScreen(){
     navigator.pop();
   }
+
+  login(){
+    navigator.pushName(RouterName.bottom_navigator_screen);
+  }
 }

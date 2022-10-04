@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_library/base/base_widget.dart';
 import 'package:flutter_library/base/base_widget_model.dart';
 import 'package:flutter_library/res/dimens.dart';
-import 'package:untitled_folder/pages/introduce_page/introduce_viewmodel.dart';
 
 import '../../res/app_color.dart';
 import '../../res/app_style.dart';
 import '../../res/contains.dart';
 import '../../utils/routers.dart';
 import 'package:provider/provider.dart';
+
+import '../introduce/introduce_viewmodel.dart';
 
 class IntroduceScreen extends StatelessWidget {
   const IntroduceScreen({Key? key}) : super(key: key);
