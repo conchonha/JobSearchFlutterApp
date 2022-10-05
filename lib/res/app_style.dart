@@ -29,4 +29,23 @@ class AppStyle{
       ),
     );
   }
+
+  static InputDecoration textFielSearch(){
+    return const InputDecoration(
+      labelStyle: TextStyle(
+          color: Colors.grey,
+          fontWeight: FontWeight.bold,
+          fontSize: AppSP.sp_14),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(30)),
+        borderSide: BorderSide(
+          color: AppColor.backgroundcolor,
+          width: 2,
+        ),
+      ),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(30)),
+      ),
+    );
+  }
 }

@@ -13,7 +13,7 @@ class BottomNavigatorLayout extends StatefulWidget {
 class _BottomNavigatorState extends State<BottomNavigatorLayout> {
   final list = [
     HomeScreen(),
-    const FindJobScreen(),
+    FindJobScreen(),
     const SettingScreen(),
   ];
   int _selectIndex = 0;

@@ -4,12 +4,12 @@ import 'package:flutter_library/res/dimens.dart';
 import 'package:untitled_folder/pages/home/home_viewmodel.dart';
 import 'package:flutter_library/base/common_list/common_list.dart';
 
-import '../../model/drawable.dart';
+import '../../model/drawer.dart';
 import '../../res/app_color.dart';
 import '../../res/app_style.dart';
 import '../../res/contains.dart';
 
-class DrawableLayout extends BaseWidgetModel<HomeViewModel> {
+class DrawerLayout extends BaseWidgetModel<HomeViewModel> {
   @override
   Widget build(BuildContext context, HomeViewModel widgetModel) {
     return Column(
@@ -62,7 +62,7 @@ class DrawableLayout extends BaseWidgetModel<HomeViewModel> {
           ),
         ),
         ...widgetModel.listDrawable
-            .map((e) => CommonListItem<DrawableData>(
+            .map((e) => CommonListItem<DrawerData>(
                 e, widgetModel.actionDrawable, _ItemWidget()))
             .toList()
       ],
@@ -70,7 +70,7 @@ class DrawableLayout extends BaseWidgetModel<HomeViewModel> {
   }
 }
 
-class _ItemWidget extends CommonItemWidget<DrawableData> {
+class _ItemWidget extends CommonItemWidget<DrawerData> {
   @override
   Widget typeListArrowPreview() {
     return InkWell(
@@ -93,7 +93,7 @@ class _ItemWidget extends CommonItemWidget<DrawableData> {
                 ),
                 child: Text(
                   commonData.title,
-                  style: AppStyle.medium,
+                  style: AppStyle.small,
                 ),
               )
             ],

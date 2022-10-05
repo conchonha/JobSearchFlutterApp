@@ -41,7 +41,8 @@ class MyApp extends StatelessWidget {
             fontSize: AppSP.sp_12,
             fontFamily: AppFont.fontMulish,
             overflow: TextOverflow.ellipsis,
-            fontWeight: FontWeight.w400),
+            fontWeight: FontWeight.w400,
+        ),
         bodySmall: TextStyle(
             color: Colors.black,
             fontSize: AppSP.sp_14,

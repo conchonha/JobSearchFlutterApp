@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_library/base/base_widget.dart';
 import 'package:flutter_library/res/dimens.dart';
 import 'package:untitled_folder/component/home/career.dart';
-import 'package:untitled_folder/component/home/drawable_layout.dart';
+import 'package:untitled_folder/component/home/drawer_layout.dart';
+import 'package:untitled_folder/component/home/recommended_by_career.dart';
 import 'package:untitled_folder/pages/home/home_viewmodel.dart';
 import 'package:untitled_folder/res/app_color.dart';
-import 'package:untitled_folder/res/contains.dart';
 
 import '../../component/home/banner.dart';
 
 class HomeScreen extends StatelessWidget {
-   HomeScreen({Key? key}) : super(key: key);
+  HomeScreen({Key? key}) : super(key: key);
   final _formKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -24,8 +24,8 @@ class HomeScreen extends StatelessWidget {
             slivers: <Widget>[
               //một thanh công cụ động mà khi chúng tôi trượt nó sẽ hiển thị nội dung
               SliverAppBar(
-                backgroundColor: Colors.transparent,
-                title: const Text("Job Hot"),
+                backgroundColor: AppColor.backgroundcolor,
+                title: const Text("Home page"),
                 centerTitle: true,
                 expandedHeight: 200,
                 //Thanh ứng dụng vẫn có thể mở rộng và co lại khi người dùng cuộn, nhưng nó sẽ vẫn hiển thị thay vì được cuộn ra khỏi tầm nhìn.
@@ -47,18 +47,15 @@ class HomeScreen extends StatelessWidget {
               ),
               SliverList(
                   delegate: SliverChildListDelegate(<Widget>[
-                  CareerWidget()
-                // EventChild(),
-                // PlaceChild(),
-                // ImageChild(),
+                CareerWidget(),
+                RecommendedByCareer(true),
+                RecommendedByCareer(false)
               ]))
             ],
           ),
           drawer: Drawer(
             child: ListView(
-              children: <Widget>[
-                DrawableLayout()
-              ],
+              children: <Widget>[DrawerLayout()],
             ),
           ),
         ));
