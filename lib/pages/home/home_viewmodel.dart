@@ -5,12 +5,21 @@ import 'package:untitled_folder/model/drawer.dart';
 import 'package:untitled_folder/model/job.dart';
 
 import '../../model/career.dart';
+import '../../services/api_services.dart';
+import '../../utils/locator_getit.dart';
 
 class HomeViewModel extends BaseVM{
+  final _api = locator<Api>();
   final ActionDrawable actionDrawable = ActionDrawable();
   final ActionCareer actionCareer = ActionCareer();
   final ActionJob actionJob = ActionJob();
 
+  // final List<Career> listCareer = [];
+
+
+  HomeViewModel(){
+    // callApi(, (p0) => null)
+  }
 
   final listDrawable = [
     DrawerData(Icons.account_circle_rounded, DrawerType.PROFILE, "Profile"),

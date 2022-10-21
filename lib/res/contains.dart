@@ -1,4 +1,4 @@
-class Constants{
+class Drawable{
   static const String _assetsImg = 'assets/images/';
   static const String _assetsIcon = 'assets/icons/';
 
@@ -15,4 +15,9 @@ class Constants{
   static const String icon_google= _assetsIcon+'ic_google.png';
   static const String icon_location_xanh= _assetsIcon+'location_xanh.png';
   static const String icon_location_den= _assetsIcon+'location_den.png';
+}
+
+
+class Constants{
+  static const String KEY_USER = "keyUser";
 }

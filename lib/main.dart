@@ -5,25 +5,27 @@ import 'package:oktoast/oktoast.dart';
 import 'package:untitled_folder/pages/introduce/introduce_screen.dart';
 import 'package:untitled_folder/res/app_color.dart';
 import 'package:untitled_folder/res/app_fonts.dart';
+import 'package:untitled_folder/utils/locator_getit.dart';
 import 'package:untitled_folder/utils/routers.dart' as router;
 
 
-GlobalKey<NavigatorState> globalKey = GlobalKey();
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
 
-void main() {
+  setupLocator();
+
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
-  final NavigatorServices navigator = NavigatorServices();
 
   @override
   Widget build(BuildContext context) {
     return OKToast(
       child: MaterialApp(
         title: 'Flutter Demo',
-        navigatorKey: navigator.globalKey ??= globalKey,
+        navigatorKey: globalKey,
         theme: _themeData,
         home: const _HomePage(),
         onGenerateRoute: router.routeSetting,

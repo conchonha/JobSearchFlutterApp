@@ -1,10 +1,10 @@
-import 'package:flutter_library/services/api.dart';
 import 'package:flutter_library/utils/shared_prefs.dart';
+import 'package:get_it/get_it.dart';
+import 'package:untitled_folder/services/api_services.dart';
 
 
-// GetIt locator = GetIt.instance;
+GetIt locator = GetIt.instance;
 
 void setupLocator() {
-  // locator.registerLazySingleton(() => API());
-  // locator.registerLazySingleton(() => SharedPrefs());
+  locator.registerLazySingleton(() => Api());
 }

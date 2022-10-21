@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_library/res/dimens.dart';
-import 'package:untitled_folder/main.dart';
+import 'package:flutter_library/utils/navigator_services.dart';
 import 'package:untitled_folder/res/app_color.dart';
 
 class AppStyle{
-  static TextStyle? get medium => Theme.of(globalKey.currentContext!).textTheme.displayMedium;
+  static TextStyle? get medium => Theme.of(globalKey.getCurrentContext).textTheme.displayMedium;
 
-  static TextStyle? get small => Theme.of(globalKey.currentContext!).textTheme.bodySmall;
+  static TextStyle? get small => Theme.of(globalKey.getCurrentContext).textTheme.bodySmall;
 
-  static TextStyle? get title => Theme.of(globalKey.currentContext!).textTheme.titleLarge;
+  static TextStyle? get title => Theme.of(globalKey.getCurrentContext).textTheme.titleLarge;
 
   static InputDecoration textFielInputDecoration(String hintText){
     return InputDecoration(
       labelText: hintText,
+      errorStyle: const TextStyle(fontSize: 5),
+      errorMaxLines: 1,
       labelStyle: const TextStyle(
           color: Colors.grey,
           fontWeight: FontWeight.bold,

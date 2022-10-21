@@ -43,7 +43,7 @@ class Register extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Image.asset(
-                            Constants.img_wellcom,
+                            Drawable.img_wellcom,
                             width: AppDP.dp_80,
                             height: AppDP.dp_80,
                             fit: BoxFit.cover,
@@ -88,20 +88,22 @@ class Register extends StatelessWidget {
                         child: ClipRRect(
                           borderRadius: const BorderRadius.all(
                               Radius.circular(AppDP.dp_30)),
-                          child: MaterialButton(
-                            color: Colors.deepPurple,
-                            onPressed: () {
-                              //--------------------- IS LOGIN
-                            },
-                            elevation: AppDP.dp_5,
-                            height: AppDP.dp_50,
-                            hoverColor: Colors.blue,
-                            minWidth: MediaQuery.of(context).size.width * 0.9,
-                            child: Center(
-                              child: Text(
-                                "Register",
-                                style: AppStyle.small
-                                    ?.copyWith(color: Colors.white),
+                          child: Consumer<UserViewModel>(
+                            builder: (_,vm,child) => MaterialButton(
+                              color: Colors.deepPurple,
+                              onPressed: () {
+                                vm.createUser();
+                              },
+                              elevation: AppDP.dp_5,
+                              height: AppDP.dp_50,
+                              hoverColor: Colors.blue,
+                              minWidth: MediaQuery.of(context).size.width * 0.9,
+                              child: Center(
+                                child: Text(
+                                  "Register",
+                                  style: AppStyle.small
+                                      ?.copyWith(color: Colors.white),
+                                ),
                               ),
                             ),
                           ),
@@ -114,7 +116,7 @@ class Register extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Image.asset(
-                            Constants.icon_facebook,
+                            Drawable.icon_facebook,
                             width: AppDP.dp_25,
                             height: AppDP.dp_25,
                           ),
@@ -134,7 +136,7 @@ class Register extends StatelessWidget {
                               //----------------------------------Sign In
                             },
                             child: Image.asset(
-                              Constants.icon_google,
+                              Drawable.icon_google,
                               width: AppDP.dp_25,
                               height: AppDP.dp_25,
                               color: Colors.red,
@@ -174,7 +176,7 @@ class _FormRegister extends BaseWidgetModel<UserViewModel> {
       child: Column(
         children: <Widget>[
           SizedBox(
-            height: AppDP.dp_40,
+            height: widgetModel.height,
             child: TextFormField(
               controller: widgetModel.nameController,
               validator: widgetModel.validateUserName,
@@ -187,10 +189,10 @@ class _FormRegister extends BaseWidgetModel<UserViewModel> {
             height: AppDP.dp_15,
           ),
           SizedBox(
-            height: AppDP.dp_40,
+            height: widgetModel.height,
             child: TextFormField(
               controller: widgetModel.emailController,
-              validator: widgetModel.validateUserName,
+              validator: widgetModel.validateUserEmail,
               keyboardType: TextInputType.emailAddress,
               style: AppStyle.small,
               decoration: AppStyle.textFielInputDecoration("E-mail"),
@@ -203,7 +205,7 @@ class _FormRegister extends BaseWidgetModel<UserViewModel> {
             alignment: Alignment.centerRight,
             children: <Widget>[
               SizedBox(
-                height: AppDP.dp_40,
+                height: widgetModel.height,
                 child: TextFormField(
                   textAlignVertical: TextAlignVertical.center,
                   validator: widgetModel.validatePassword,

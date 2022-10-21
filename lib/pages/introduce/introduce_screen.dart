@@ -26,12 +26,12 @@ class IntroduceScreen extends StatelessWidget {
                 children: <Widget>[
                   _IntroduceChild(
                       "Hệ thống chủ động tìm và gợi ý việc làm đến với bạn",
-                      Constants.img_danang),
+                      Drawable.img_danang),
                   _IntroduceChild(
                       "Tự động tìm kiếm các công việc phù hợp quang vị trí của bạn",
-                      Constants.img_danang1),
+                      Drawable.img_danang1),
                   _IntroduceChild("Hồ sơ trực quan trong mắt nhà tuyển dụng",
-                      Constants.img_danang2),
+                      Drawable.img_danang2),
                 ],
               ),
               Container(

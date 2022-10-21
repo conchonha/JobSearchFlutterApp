@@ -38,7 +38,7 @@ class _BannerChildState extends State<BannerChild> {
           controller: _pageViewController,
           children: _listUrl.map((String url) {
             return Image.asset(
-              Constants.img_danang1,
+              Drawable.img_danang1,
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
               fit: BoxFit.fill,

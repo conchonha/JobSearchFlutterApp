@@ -29,7 +29,7 @@ class DrawerLayout extends BaseWidgetModel<HomeViewModel> {
                     ClipRRect(
                       borderRadius: const BorderRadius.all(Radius.circular(AppDP.dp_35)),
                       child: Image.asset(
-                        Constants.img_danang,
+                        Drawable.img_danang,
                         width: AppDP.dp_60,
                         height: AppDP.dp_60,
                         fit: BoxFit.fill,

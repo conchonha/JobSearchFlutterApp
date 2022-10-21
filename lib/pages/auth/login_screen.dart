@@ -15,6 +15,9 @@ class LogInScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseWidget<UserViewModel>(
         viewmodel: UserViewModel(),
+        onCallBack: (_,vm) async{
+          vm.checkSaveAccountAndNavigate();
+        },
         child: Scaffold(
           body: Column(
             children: [
@@ -42,7 +45,7 @@ class LogInScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Image.asset(
-                            Constants.img_wellcom,
+                            Drawable.img_wellcom,
                             width: AppDP.dp_80,
                             height: AppDP.dp_80,
                             fit: BoxFit.cover,
@@ -80,7 +83,7 @@ class LogInScreen extends StatelessWidget {
                             child: Column(
                               children: <Widget>[
                                 SizedBox(
-                                  height: AppDP.dp_40,
+                                  height: model.height,
                                   child: TextFormField(
                                     controller: model.nameController,
                                     validator: model.validateUserName,
@@ -98,7 +101,7 @@ class LogInScreen extends StatelessWidget {
                                   alignment: Alignment.centerRight,
                                   children: <Widget>[
                                     SizedBox(
-                                      height: AppDP.dp_40,
+                                      height: model.height,
                                       child: TextFormField(
                                         textAlignVertical:
                                             TextAlignVertical.center,
@@ -185,7 +188,7 @@ class LogInScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Image.asset(
-                            Constants.icon_facebook,
+                            Drawable.icon_facebook,
                             width: AppDP.dp_25,
                             height: AppDP.dp_25,
                           ),
@@ -205,7 +208,7 @@ class LogInScreen extends StatelessWidget {
                               //----------------------------------Sign In
                             },
                             child: Image.asset(
-                              Constants.icon_google,
+                              Drawable.icon_google,
                               width: AppDP.dp_25,
                               height: AppDP.dp_25,
                               color: Colors.red,
