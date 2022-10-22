@@ -22,6 +22,7 @@ class Drawable{
 
 class Constants{
   static const KEY_USER = "keyUser";
-  static const KEY_USER_CAREER = "keyUserCareer";
-  static const KEY_AREA = "keyUserCareer";
+  static const KEY_PROFILE_CAREER = "keyProfileCareer";
+  static const KEY_PROFILE_AREA = "keyProfileArea";
+  static const KEY_PROFILE = "KeyProfile";
 }

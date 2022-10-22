@@ -3,6 +3,7 @@ import 'package:flutter_library/services/api.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:untitled_folder/model/area/area.dart';
 import 'package:untitled_folder/model/career/career.dart';
+import 'package:untitled_folder/model/profile/profile.dart';
 
 import '../model/response/auth/user/user_response.dart';
 import '../model/response/auth/user_uuid/user_uuid_response.dart';
@@ -40,6 +41,9 @@ abstract class RestClient{
 
   @GET('/Career/getDataArea')
   Future<ResponseData<Area>> getListArea();
+
+  @POST('/Profile/register')
+  Future<ResponseData<Profile>> registerProfile(@Body() Profile profile);
 }
 
 class Api {

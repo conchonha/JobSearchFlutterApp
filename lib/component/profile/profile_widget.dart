@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_library/res/dimens.dart';
-import 'package:untitled_folder/res/app_color.dart';
 import 'package:untitled_folder/res/app_style.dart';
 
 import '../../model/profile_data.dart';

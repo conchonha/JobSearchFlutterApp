@@ -42,7 +42,7 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                   child: Consumer<ProfileViewModel>(
                     builder: (_, vm, child) => Material(
                       child: InkWell(
-                        onTap: vm.updateProfile(),
+                        onTap: vm.updateProfile,
                         child: Text(
                           "Update",
                           style: AppStyle.small,

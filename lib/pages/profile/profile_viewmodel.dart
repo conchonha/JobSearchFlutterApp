@@ -3,6 +3,7 @@ import 'package:flutter_library/base/base_vm.dart';
 import 'package:untitled_folder/model/area/area.dart';
 import 'package:untitled_folder/model/career/career.dart';
 import 'package:untitled_folder/model/data/data_provider.dart';
+import 'package:untitled_folder/model/profile/profile.dart';
 import 'package:untitled_folder/model/profile_data.dart';
 import 'package:untitled_folder/model/response/home/response_data.dart';
 import 'package:untitled_folder/res/contains.dart';
@@ -59,32 +60,33 @@ class ProfileViewModel extends BaseVM {
     userInFor = sharedPrefs.getObject<User>(User.fromJson, Constants.KEY_USER);
 
     _listItem.addAll([
-      ProfileData(_heightController, "Enter Height", "Height:",textInputType: TextInputType.number),
-      ProfileData(_weightController, "Enter Weight", "Weight",textInputType: TextInputType.number),
+      ProfileData(_heightController, "Enter Height", "Height:",
+          textInputType: TextInputType.number),
+      ProfileData(_weightController, "Enter Weight", "Weight",
+          textInputType: TextInputType.number),
       ProfileData(_experienceController, "Enter Experience", "Experience:"),
       ProfileData(
           _schoolsNameController, "Enter Schools Name", "Schools Name:"),
-      ProfileData(
-          _proofLetterController, "Enter Proof Letter", "Proof Letter:",textInputType: TextInputType.number),
+      ProfileData(_proofLetterController, "Enter Proof Letter", "Proof Letter:",
+          textInputType: TextInputType.number),
       ProfileData(_interestsController, "Enter Interest", "Interest:"),
       ProfileData(_homeTownController, "Enter Home Town", "Home Town:"),
       ProfileData(_educationLevelController, "Enter Education Level",
           "Education Level:"),
       ProfileData(_specialConditionsController, "Enter Special Conditions",
           "Special Conditions"),
-      ProfileData(_salaryController, "Enter Salary", "Salary:",textInputType: TextInputType.number),
+      ProfileData(_salaryController, "Enter Salary", "Salary:",
+          textInputType: TextInputType.number),
       ProfileData(_jobInformationController, "Enter Job Information",
           "Job Information:"),
-
       ProfileData.TypeDrop((value) {
         _areaDropDownChangeValue(value);
         return _listAreaDrop;
       }, "Area"),
-
       ProfileData.TypeDrop((value) {
         _careerDropDownChange(value);
         return _listCareerDrop;
-      },"Career Aspirations"),
+      }, "Career Aspirations"),
     ]);
 
     notifyListeners();
@@ -93,10 +95,10 @@ class ProfileViewModel extends BaseVM {
   List<Widget> get listItems => _listItem.map((e) {
         if (e.type == ProfileDataType.TYPE_NORMAL) {
           return ProfileWidget(
-              controller: e.controller,
-              hintText: e.hintText,
-              nameEnd: e.nameEnd,
-              textInputType: e.textInputType,
+            controller: e.controller,
+            hintText: e.hintText,
+            nameEnd: e.nameEnd,
+            textInputType: e.textInputType,
           );
         }
         debugPrint("item drop called: ");
@@ -113,18 +115,45 @@ class ProfileViewModel extends BaseVM {
     debugPrint("careerDropDownChange value: $value");
     _listCareer.forEach((element) {
       if (value == element.title) {
-        sharedPrefs.push(key: Constants.KEY_USER_CAREER, value: element);
+        sharedPrefs.push(key: Constants.KEY_PROFILE_CAREER, value: element);
       }
     });
   }
 
-  updateProfile() {}
+  void updateProfile() {
+    debugPrint("updateProfile called start()");
+    final profile = Profile(
+        "${userInFor?.uuid}",
+        int.tryParse(_heightController.text.trim()),
+        int.tryParse(_weightController.text.trim()),
+        _experienceController.text,
+        _schoolsNameController.text,
+        _proofLetterController.text,
+        _interestsController.text,
+        _homeTownController.text,
+        _educationLevelController.text,
+        sharedPrefs
+                .getObject<Career>(Career.fromJson, Constants.KEY_PROFILE_CAREER)
+                ?.id ??
+            1,
+        _specialConditionsController.text,
+        double.tryParse(_salaryController.text.trim()),
+        _jobInformationController.text,
+        sharedPrefs.getObject<Area>(Area.fromJson, Constants.KEY_PROFILE_AREA)?.id ??
+            1);
+
+    callApi<ResponseData<Profile>>(
+        _api.client.registerProfile(profile), (p0) {
+          debugPrint("updateProfile success: $p0");
+          sharedPrefs.push(key: Constants.KEY_PROFILE, value: p0.data[0]);
+    });
+  }
 
   void _areaDropDownChangeValue(String? value) {
     debugPrint("_areaDropDownChangeValue value: $value");
     _listArea.forEach((element) {
       if (value == element.name) {
-        sharedPrefs.push(key: Constants.KEY_AREA, value: element);
+        sharedPrefs.push(key: Constants.KEY_PROFILE_AREA, value: element);
       }
     });
   }
