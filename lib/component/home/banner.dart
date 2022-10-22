@@ -12,7 +12,7 @@ class BannerChild extends StatefulWidget {
 }
 
 class _BannerChildState extends State<BannerChild> {
-  final PageController _pageViewController = PageController();
+  final _pageViewController = PageController();
   int _currentItem = 0;
   final _listUrl = [
     'https://sites.google.com/site/dulichdanang365/_/rsrc/1560331354632/bai-bien-da-nang/bai-bien-my-khe-da-nang/Bai-Bien-My-Khe2.jpg',
@@ -76,20 +76,22 @@ class _BannerChildState extends State<BannerChild> {
 
   void _animateSlider() {
     Future.delayed(const Duration(seconds: 2)).then((_) {
-      if (_pageViewController.page == null) return;
-      setState(() {
-        _currentItem = _pageViewController.page!.round() + 1;
-      });
+      if(_pageViewController.hasClients){
+        if (_pageViewController.page == null) return;
+        setState(() {
+          _currentItem = _pageViewController.page!.round() + 1;
+        });
 
-      if (_currentItem == _listUrl.length) {
-        _currentItem = 0;
+        if (_currentItem == _listUrl.length) {
+          _currentItem = 0;
+        }
+
+        _pageViewController
+            .animateToPage(_currentItem,
+            duration: const Duration(microseconds: 350),
+            curve: Curves.easeInOutCirc)
+            .then((_) => _animateSlider());
       }
-
-      _pageViewController
-          .animateToPage(_currentItem,
-              duration: const Duration(microseconds: 350),
-              curve: Curves.easeInOutCirc)
-          .then((_) => _animateSlider());
     });
   }
 }

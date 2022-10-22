@@ -15,9 +15,13 @@ class Drawable{
   static const String icon_google= _assetsIcon+'ic_google.png';
   static const String icon_location_xanh= _assetsIcon+'location_xanh.png';
   static const String icon_location_den= _assetsIcon+'location_den.png';
+  static const String ic_layer_left = _assetsIcon+'ic_layer_left.svg';
+  static const String ic_avatar_default = _assetsIcon+'ic_avatar.png';
 }
 
 
 class Constants{
-  static const String KEY_USER = "keyUser";
+  static const KEY_USER = "keyUser";
+  static const KEY_USER_CAREER = "keyUserCareer";
+  static const KEY_AREA = "keyUserCareer";
 }

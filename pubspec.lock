@@ -232,6 +232,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.6"
+  dropdown_button2:
+    dependency: "direct main"
+    description:
+      name: dropdown_button2
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.8.8"
   fake_async:
     dependency: transitive
     description:
@@ -284,7 +291,7 @@ packages:
     description:
       path: flutter_library
       ref: master
-      resolved-ref: "7678278ed03c893d4e3c43daabe4b15b336aeb26"
+      resolved-ref: b47f2f6a83b1504b4afa439ce49a40dab6da1cfa
       url: "git@github.com:conchonha/FlutterLibrary.git"
     source: git
     version: "0.0.1"

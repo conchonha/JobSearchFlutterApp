@@ -1,9 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_library/services/api.dart';
 import 'package:retrofit/retrofit.dart';
+import 'package:untitled_folder/model/area/area.dart';
+import 'package:untitled_folder/model/career/career.dart';
 
-import '../model/respone/auth/user/user_response.dart';
-import '../model/respone/auth/user_uuid/user_uuid_response.dart';
+import '../model/response/auth/user/user_response.dart';
+import '../model/response/auth/user_uuid/user_uuid_response.dart';
+import '../model/response/home/response_data.dart';
 import '../model/user/user.dart';
 
 part 'api_services.g.dart';
@@ -31,6 +34,12 @@ abstract class RestClient{
 
   @GET('/User/getUserByUserName?name={name}')
   Future<UseResponse>findUserByName(@Path("name") userName);
+
+  @GET('/Career/getDataCarreer')
+  Future<ResponseData<Career>> getListCareer();
+
+  @GET('/Career/getDataArea')
+  Future<ResponseData<Area>> getListArea();
 }
 
 class Api {

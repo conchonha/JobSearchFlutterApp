@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_library/res/dimens.dart';
 import 'package:flutter_library/utils/navigator_services.dart';
 import 'package:oktoast/oktoast.dart';
+import 'package:untitled_folder/pages/bottom_navigate/bottom_navigate_screen.dart';
 import 'package:untitled_folder/pages/introduce/introduce_screen.dart';
 import 'package:untitled_folder/res/app_color.dart';
 import 'package:untitled_folder/res/app_fonts.dart';
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         navigatorKey: globalKey,
         theme: _themeData,
-        home: const _HomePage(),
+        home:  const BottomNavigatorLayout(),
         onGenerateRoute: router.routeSetting,
       ),
     );

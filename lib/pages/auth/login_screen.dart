@@ -15,9 +15,6 @@ class LogInScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseWidget<UserViewModel>(
         viewmodel: UserViewModel(),
-        onCallBack: (_,vm) async{
-          vm.checkSaveAccountAndNavigate();
-        },
         child: Scaffold(
           body: Column(
             children: [

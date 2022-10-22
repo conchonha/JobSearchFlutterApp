@@ -5,7 +5,7 @@ import 'package:untitled_folder/pages/home/home_viewmodel.dart';
 import 'package:untitled_folder/res/app_color.dart';
 import 'package:untitled_folder/res/app_style.dart';
 
-import '../../model/career.dart';
+import '../../model/career/career.dart';
 
 class CareerWidget extends BaseWidgetModel<HomeViewModel>{
   @override

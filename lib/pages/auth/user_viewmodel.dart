@@ -6,8 +6,8 @@ import 'package:untitled_folder/res/contains.dart';
 import 'package:untitled_folder/services/api_services.dart';
 import 'package:untitled_folder/utils/routers.dart';
 
-import '../../model/respone/auth/user/user_response.dart';
-import '../../model/respone/auth/user_uuid/user_uuid_response.dart';
+import '../../model/response/auth/user_uuid/user_uuid_response.dart';
+import '../../model/response/auth/user/user_response.dart';
 import '../../model/user/user.dart';
 import '../../utils/locator_getit.dart';
 
@@ -22,17 +22,15 @@ class UserViewModel extends BaseVM {
   double height = 40;
 
   @override
-  void onInit() {}
+  void onInit() {
+    if(sharedPrefs.get<String>(Constants.KEY_USER) != null){
+      navigator.pushName(RouterName.bottom_navigator_screen);
+    }
+  }
 
   void checkShowPassWord() {
     checkShowPass = !checkShowPass;
     notifyListeners();
-  }
-
-  void checkSaveAccountAndNavigate(){
-    if(sharedPrefs.get<String>(Constants.KEY_USER) != null){
-      navigator.pushName(RouterName.bottom_navigator_screen);
-    }
   }
 
   void checkSaveUser(bool? value) {

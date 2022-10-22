@@ -4,37 +4,27 @@ import 'package:flutter_library/base/common_list/common_action.dart';
 import 'package:untitled_folder/model/drawer.dart';
 import 'package:untitled_folder/model/job.dart';
 
-import '../../model/career.dart';
+import '../../model/career/career.dart';
+import '../../model/data/data_provider.dart';
+import '../../model/response/home/response_data.dart';
 import '../../services/api_services.dart';
 import '../../utils/locator_getit.dart';
 
 class HomeViewModel extends BaseVM{
   final _api = locator<Api>();
+  final _dataProvider = DataProvider();
+
   final ActionDrawable actionDrawable = ActionDrawable();
   final ActionCareer actionCareer = ActionCareer();
   final ActionJob actionJob = ActionJob();
 
-  // final List<Career> listCareer = [];
-
-
-  HomeViewModel(){
-    // callApi(, (p0) => null)
-  }
+  final List<Career> listCareer = [];
 
   final listDrawable = [
     DrawerData(Icons.account_circle_rounded, DrawerType.PROFILE, "Profile"),
     DrawerData(Icons.save, DrawerType.JOB_STORAGE, "Job Storage"),
     DrawerData(Icons.app_registration, DrawerType.JOB_APPLY, "Job Apply"),
     DrawerData(Icons.logout, DrawerType.LOGOUT, "Logout"),
-  ];
-
-  final listCareer = [
-    Career(0,"Mobile","https://www.clipartmax.com/png/middle/178-1788500_mobile-app-development-mobile-phone-round-logo.png"),
-    Career(0,"Java","https://w7.pngwing.com/pngs/592/145/png-transparent-java-programming-language-programmer-computer-programming-logo-others-text-computer-program-programming-language.png"),
-    Career(0,"Web","https://w7.pngwing.com/pngs/428/279/png-transparent-computer-icons-web-page-identity-angle-text-logo-thumbnail.png"),
-    Career(0,"Python","https://www.pngfind.com/pngs/m/62-626208_python-logo-png-transparent-background-python-logo-png.png"),
-    Career(0,"Designed","https://www.logodesign.net/logo/letter-d-inside-polygon-4839ld.png"),
-    Career(0,"Test","https://w7.pngwing.com/pngs/192/840/png-transparent-beta-tester-software-testing-beta-verzia-computer-programming-computer-software-arc-miscellaneous-text-trademark-thumbnail.png"),
   ];
 
   static const String _des = "Clear Academy system and mentoring program to help you develop your career within Netcompany \n"
@@ -61,8 +51,13 @@ class HomeViewModel extends BaseVM{
 
   @override
   void onInit() {
+    callApi<ResponseData<Career>>(_api.client.getListCareer(), (value){
+      listCareer.clear();
+      listCareer.addAll(value.data);
+      _dataProvider.setListCareer(value.data);
+      notifyListeners();
+    });
   }
-
 }
 
 class ActionDrawable extends CommonAction<DrawerData>{

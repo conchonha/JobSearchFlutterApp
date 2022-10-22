@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:untitled_folder/pages/find_job/find_job_screen.dart';
 import 'package:untitled_folder/pages/home/home_screen.dart';
-import 'package:untitled_folder/pages/setting/setting_screen.dart';
+import 'package:untitled_folder/pages/profile/profile_screen.dart';
 
 class BottomNavigatorLayout extends StatefulWidget {
   const BottomNavigatorLayout({Key? key}) : super(key: key);
@@ -14,7 +14,7 @@ class _BottomNavigatorState extends State<BottomNavigatorLayout> {
   final list = [
     HomeScreen(),
     FindJobScreen(),
-    const SettingScreen(),
+    const MyProfileScreen(),
   ];
   int _selectIndex = 0;
 
