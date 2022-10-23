@@ -44,12 +44,12 @@ class DrawerLayout extends BaseWidgetModel<HomeViewModel> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            "Sang Thai Ba",
+                            "${widgetModel.userInFor?.name}",
                             style:
                                 AppStyle.small?.copyWith(color: Colors.white),
                           ),
                           Text(
-                            "thaibasang8@gmail.com",
+                            "${widgetModel.userInFor?.email}",
                             style:
                                 AppStyle.medium?.copyWith(color: Colors.grey),
                             textAlign: TextAlign.start,

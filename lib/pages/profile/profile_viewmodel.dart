@@ -7,6 +7,7 @@ import 'package:untitled_folder/model/profile/profile.dart';
 import 'package:untitled_folder/model/profile_data.dart';
 import 'package:untitled_folder/model/response/home/response_data.dart';
 import 'package:untitled_folder/res/contains.dart';
+import 'package:untitled_folder/utils/routers.dart';
 
 import '../../component/profile/profile_widget.dart';
 import '../../model/user/user.dart';
@@ -31,6 +32,9 @@ class ProfileViewModel extends BaseVM {
 
   final List<ProfileData> _listItem = [];
   User? userInFor;
+  Profile? _profile;
+  Career? _career;
+  Area? _area;
 
   final List<Career> _listCareer = [];
   final List<String> _listCareerDrop = ["Career Aspirations"];
@@ -38,7 +42,7 @@ class ProfileViewModel extends BaseVM {
   final List<Area> _listArea = [];
   final List<String> _listAreaDrop = ["Area"];
 
-  listenerSteam() {
+  void _listenerSteam() {
     addStreamListener<List<Career>>(_dataProvider.listCareerStream, (p0) {
       _listCareer.addAll(p0);
       p0.forEach((element) {
@@ -56,37 +60,56 @@ class ProfileViewModel extends BaseVM {
     });
   }
 
-  initValue() {
+  void _initValue() {
     userInFor = sharedPrefs.getObject<User>(User.fromJson, Constants.KEY_USER);
+    _profile =
+        sharedPrefs.getObject<Profile>(Profile.fromJson, Constants.KEY_PROFILE);
+    _career = sharedPrefs.getObject<Career>(
+        Career.fromJson, Constants.KEY_PROFILE_CAREER);
+    _area =
+        sharedPrefs.getObject<Area>(Area.fromJson, Constants.KEY_PROFILE_AREA);
 
     _listItem.addAll([
-      ProfileData(_heightController, "Enter Height", "Height:",
+      ProfileData(_heightController,
+          _profile?.height.toString() ?? "Enter Height", "Height:",
           textInputType: TextInputType.number),
-      ProfileData(_weightController, "Enter Weight", "Weight",
+      ProfileData(_weightController,
+          _profile?.weight?.toString() ?? "Enter Weight", "Weight",
           textInputType: TextInputType.number),
-      ProfileData(_experienceController, "Enter Experience", "Experience:"),
+      ProfileData(_experienceController,
+          _profile?.experience ?? "Enter Experience", "Experience:"),
+      ProfileData(_schoolsNameController,
+          _profile?.schoolsName ?? "Enter Schools Name", "Schools Name:"),
+      ProfileData(_proofLetterController,
+          _profile?.proofLetter ?? "Enter Proof Letter", "Proof Letter:",
+          textInputType: TextInputType.number),
+      ProfileData(_interestsController, _profile?.interests ?? "Enter Interest",
+          "Interest:"),
+      ProfileData(_homeTownController, _profile?.homeTown ?? "Enter Home Town",
+          "Home Town:"),
       ProfileData(
-          _schoolsNameController, "Enter Schools Name", "Schools Name:"),
-      ProfileData(_proofLetterController, "Enter Proof Letter", "Proof Letter:",
-          textInputType: TextInputType.number),
-      ProfileData(_interestsController, "Enter Interest", "Interest:"),
-      ProfileData(_homeTownController, "Enter Home Town", "Home Town:"),
-      ProfileData(_educationLevelController, "Enter Education Level",
+          _educationLevelController,
+          _profile?.educationLevel ?? "Enter Education Level",
           "Education Level:"),
-      ProfileData(_specialConditionsController, "Enter Special Conditions",
+      ProfileData(
+          _specialConditionsController,
+          _profile?.specialConditions ?? "Enter Special Conditions",
           "Special Conditions"),
-      ProfileData(_salaryController, "Enter Salary", "Salary:",
+      ProfileData(_salaryController,
+          _profile?.salary?.toString() ?? "Enter Salary", "Salary:",
           textInputType: TextInputType.number),
-      ProfileData(_jobInformationController, "Enter Job Information",
+      ProfileData(
+          _jobInformationController,
+          _profile?.jobInformation ?? "Enter Job Information",
           "Job Information:"),
       ProfileData.TypeDrop((value) {
         _areaDropDownChangeValue(value);
         return _listAreaDrop;
-      }, "Area"),
+      }, _area?.name ?? "Area"),
       ProfileData.TypeDrop((value) {
         _careerDropDownChange(value);
         return _listCareerDrop;
-      }, "Career Aspirations"),
+      }, _career?.title ?? "Career Aspirations"),
     ]);
 
     notifyListeners();
@@ -107,8 +130,8 @@ class ProfileViewModel extends BaseVM {
 
   @override
   void onInit() {
-    initValue();
-    listenerSteam();
+    _initValue();
+    _listenerSteam();
   }
 
   void _careerDropDownChange(String? value) {
@@ -132,20 +155,15 @@ class ProfileViewModel extends BaseVM {
         _interestsController.text,
         _homeTownController.text,
         _educationLevelController.text,
-        sharedPrefs
-                .getObject<Career>(Career.fromJson, Constants.KEY_PROFILE_CAREER)
-                ?.id ??
-            1,
+        _career?.id ?? 1,
         _specialConditionsController.text,
         double.tryParse(_salaryController.text.trim()),
         _jobInformationController.text,
-        sharedPrefs.getObject<Area>(Area.fromJson, Constants.KEY_PROFILE_AREA)?.id ??
-            1);
+        _area?.id ?? 1);
 
-    callApi<ResponseData<Profile>>(
-        _api.client.registerProfile(profile), (p0) {
-          debugPrint("updateProfile success: $p0");
-          sharedPrefs.push(key: Constants.KEY_PROFILE, value: p0.data[0]);
+    callApi<ResponseData<Profile>>(_api.client.registerProfile(profile), (p0) {
+      debugPrint("updateProfile success: $p0");
+      sharedPrefs.push(key: Constants.KEY_PROFILE, value: p0.data[0]);
     });
   }
 
@@ -156,5 +174,9 @@ class ProfileViewModel extends BaseVM {
         sharedPrefs.push(key: Constants.KEY_PROFILE_AREA, value: element);
       }
     });
+  }
+
+  void backProfileScreen() {
+    navigator.pushNameAndRemoveUtil(RouterName.bottom_navigator_screen, RouterName.bottom_navigator_screen);
   }
 }

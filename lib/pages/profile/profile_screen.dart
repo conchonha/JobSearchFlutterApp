@@ -3,6 +3,7 @@ import 'package:flutter_library/base/base_widget.dart';
 import 'package:flutter_library/res/dimens.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
+import 'package:untitled_folder/pages/bottom_navigate/bottom_navigate_viewmodel.dart';
 import 'package:untitled_folder/pages/profile/profile_viewmodel.dart';
 import 'package:untitled_folder/res/app_style.dart';
 import 'package:untitled_folder/res/contains.dart' as Drawable;
@@ -25,9 +26,7 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
           appBar: largeAppbar(
               childLeading: Consumer<ProfileViewModel>(
                 builder: (_, vm, child) => IconButton(
-                  onPressed: () {
-                    vm.navigator.pop();
-                  },
+                  onPressed: vm.backProfileScreen,
                   icon: SvgPicture.asset(
                     Drawable.Drawable.ic_layer_left,
                     width: AppDP.dp_6,
