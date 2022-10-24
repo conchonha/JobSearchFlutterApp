@@ -229,24 +229,6 @@ class _FormRegister extends BaseWidgetModel<UserViewModel> {
               )
             ],
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: AppDP.dp_0, top: AppDP.dp_15),
-            child: Row(
-              children: <Widget>[
-                Checkbox(
-                  checkColor: Colors.white,
-                  activeColor: Colors.deepPurple,
-                  hoverColor: Colors.deepPurple,
-                  value: widgetModel.isPrefsLogin,
-                  onChanged: widgetModel.checkSaveUser,
-                ),
-                Text(
-                  "Nhớ tài khoản",
-                  style: AppStyle.small,
-                )
-              ],
-            ),
-          ),
         ],
       ),
     );

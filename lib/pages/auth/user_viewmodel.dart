@@ -91,12 +91,8 @@ class UserViewModel extends BaseVM {
                 emailController.text.trim(),
                 )), (userResponse) {
           showToast("Register success", position: ToastPosition.bottom);
-          if(isPrefsLogin!){
-            sharedPrefs.push(
-                key: Constants.KEY_USER, value: userResponse.data);
-          }
-          navigator.pushNameAndRemoveUtil(RouterName.bottom_navigator_screen,
-              RouterName.bottom_navigator_screen);
+          navigator.pushNameAndRemoveUtil(RouterName.login_screen,
+              RouterName.login_screen);
         });
       }, closeLoading: false);
     } else {

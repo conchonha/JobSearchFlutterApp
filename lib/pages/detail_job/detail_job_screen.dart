@@ -165,15 +165,18 @@ class _ContentWidget extends BaseWidgetModel<DetailJobViewModel> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: AppDP.dp_5),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             "$title:    ",
             style: AppStyle.small?.copyWith(fontWeight: FontWeight.bold),
           ),
-          Text(
-            content,
-            style: AppStyle.medium,
+          Padding(
+            padding: const EdgeInsets.only(top: AppDP.dp_2),
+            child: Text(
+              content,
+              style: AppStyle.medium,
+            ),
           )
         ],
       ),

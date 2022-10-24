@@ -291,7 +291,7 @@ packages:
     description:
       path: flutter_library
       ref: master
-      resolved-ref: aee21a5796288948d9ad19b34bdc96ddceeb562a
+      resolved-ref: "1bc946170ad1ee5abdbfdc0415110627c227aedc"
       url: "git@github.com:conchonha/FlutterLibrary.git"
     source: git
     version: "0.0.1"

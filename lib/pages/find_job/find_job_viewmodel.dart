@@ -85,6 +85,6 @@ class FindJobViewModel extends BaseVM{
       listSearch.clear();
       listSearch.addAll(p0.data);
       notifyListeners();
-    });
+    },closeLoading: false);
   }
 }
