@@ -15,7 +15,7 @@ import '../../services/api_services.dart';
 import '../../utils/locator_getit.dart';
 
 class ProfileViewModel extends BaseVM {
-  final _api = locator<Api>();
+  final _api = locator<Api>().client;
   final _dataProvider = DataProvider();
 
   final _heightController = TextEditingController();
@@ -158,7 +158,7 @@ class ProfileViewModel extends BaseVM {
         _jobInformationController.text,
         _area?.id ?? 1);
 
-    callApi<ResponseData<Profile>>(_api.client.registerProfile(profile), (p0) {
+    callApi<ResponseData<Profile>>(_api.registerProfile(profile), (p0) {
       debugPrint("updateProfile success: $p0");
       sharedPrefs.push(key: Constants.KEY_PROFILE, value: p0.data[0]);
     });

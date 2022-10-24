@@ -38,7 +38,7 @@ class DetailJobViewModel extends BaseVM{
   void onInit() {
     addStreamListener<List<Area>>(_dataProvider.listAreaStream, (p0){
       p0.forEach((element) {
-        if(job.englishLevel == element.id){
+        if(job.areaId == element.id){
           listItemEnd.first["Area"] = element.name;
           notifyListeners();
         }

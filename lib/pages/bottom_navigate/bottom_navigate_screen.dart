@@ -22,7 +22,7 @@ class BottomNavigatorLayout extends StatelessWidget {
                   BottomNavigationBarItem(
                       icon: Icon(Icons.supervisor_account), label: "Find"),
                   BottomNavigationBarItem(
-                      label: "Setting", icon: Icon(Icons.select_all))
+                      label: "Account", icon: Icon(Icons.select_all))
                 ],
                 currentIndex: vm.selectIndex,
                 onTap: vm.setPageIndex,

@@ -82,6 +82,7 @@ class HomeViewModel extends BaseVM {
 
 class ActionDrawable extends CommonAction<DrawerData> {
   final _shaPrefs = SharedPrefs();
+  Function(DrawerData)? callback;
 
   @override
   void onClickListener(DrawerData data) {
@@ -101,6 +102,7 @@ class ActionDrawable extends CommonAction<DrawerData> {
         navigator.pushNameAndRemoveUtil(RouterName.login_screen, RouterName.login_screen);
         break;
     }
+    callback?.call(data);
   }
 }
 

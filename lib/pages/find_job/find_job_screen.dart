@@ -25,8 +25,14 @@ class FindJobScreen extends StatelessWidget {
               Container(
                 // Background
                 color: AppColor.backgroundcolor,
-                height: MediaQuery.of(context).size.height * 0.2,
-                width: MediaQuery.of(context).size.width, // Background
+                height: MediaQuery
+                    .of(context)
+                    .size
+                    .height * 0.2,
+                width: MediaQuery
+                    .of(context)
+                    .size
+                    .width, // Background
                 child: const Center(
                   child: Text(
                     "Search Option",
@@ -39,29 +45,43 @@ class FindJobScreen extends StatelessWidget {
               ),
 
               Consumer<FindJobViewModel>(
-                builder: (_, vm, child) => Container(
-                  margin: EdgeInsets.only(
-                      top: MediaQuery.of(context).size.height * 0.2),
-                  height: MediaQuery.of(context).size.height * 0.8,
-                  width: MediaQuery.of(context).size.width,
-                  child: ListView(
-                    children: vm.listSearch
-                        .map((e) => CommonListItem<Job>(
-                            e, vm.actionJob, ItemWidgetRecommended()))
-                        .toList(),
-                  ),
-                ),
+                builder: (_, vm, child) =>
+                    Container(
+                      margin: EdgeInsets.only(
+                          top: MediaQuery
+                              .of(context)
+                              .size
+                              .height * 0.2),
+                      height: MediaQuery
+                          .of(context)
+                          .size
+                          .height * 0.8,
+                      width: MediaQuery
+                          .of(context)
+                          .size
+                          .width,
+                      child: ListView(
+                        children: vm.listSearch
+                            .map((e) =>
+                            CommonListItem<Job>(
+                                e, vm.actionJob, ItemWidgetRecommended()))
+                            .toList(),
+                      ),
+                    ),
               ), // Required some widget in between to float AppBar
 
               Positioned(
                 // To take AppBar Size only
-                top: MediaQuery.of(context).size.height * 0.17,
+                top: MediaQuery
+                    .of(context)
+                    .size
+                    .height * 0.17,
                 left: 20.0,
                 right: 20.0,
                 child: AppBar(
                   backgroundColor: Colors.white,
                   leading: GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       _formKey.currentState?.openDrawer();
                     },
                     child: const Icon(
@@ -70,11 +90,13 @@ class FindJobScreen extends StatelessWidget {
                     ),
                   ),
                   primary: false,
-                  title: const TextField(
-                      decoration: InputDecoration(
+                  title: Consumer<FindJobViewModel>(builder: (_, vm, child) => TextField(
+                      onChanged: vm.onTextChange,
+                      decoration: const InputDecoration(
                           hintText: "Search",
                           border: InputBorder.none,
                           hintStyle: TextStyle(color: Colors.grey))),
+                  ),
                   actions: <Widget>[
                     IconButton(
                       icon: const Icon(Icons.search,

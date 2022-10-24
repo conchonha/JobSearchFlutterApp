@@ -51,6 +51,21 @@ abstract class RestClient{
 
   @GET('/Career/getListJobFromArea?areaId={areaId}')
   Future<ResponseData<Job>> getListRecommendedByArea(@Path("areaId") areaId);
+
+  @GET('/Career/getListJobLess10tr')
+  Future<ResponseData<Job>> getListJobLess10tr();
+
+  @GET('/Career/getListJobBetter10tr_20tr')
+  Future<ResponseData<Job>> getListJobBetter10tr_20tr();
+
+  @GET('/Career/getListJobBigger20tr')
+  Future<ResponseData<Job>> getListJobBigger20tr();
+
+  @GET('/Career/getListJobFromEnglishLevelId?englishLevel={englishLevel}')
+  Future<ResponseData<Job>> getListJobFromEnglishLevelId(@Path('englishLevel') englishLevel);
+
+  @GET('/Career/getListFromSearch?textSearch={textSearch}')
+  Future<ResponseData<Job>> getListFromSearch(@Path('textSearch') textSearch);
 }
 
 class Api {
