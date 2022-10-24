@@ -3,6 +3,7 @@ import 'package:flutter_library/services/api.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:untitled_folder/model/area/area.dart';
 import 'package:untitled_folder/model/career/career.dart';
+import 'package:untitled_folder/model/job/job.dart';
 import 'package:untitled_folder/model/profile/profile.dart';
 
 import '../model/response/auth/user/user_response.dart';
@@ -12,7 +13,7 @@ import '../model/user/user.dart';
 
 part 'api_services.g.dart';
 
-@RestApi(baseUrl: 'http://192.168.60.165/JobSearch/public/rest-api')
+@RestApi(baseUrl: 'http://192.168.179.165/JobSearch/public/rest-api')
 abstract class RestClient{
 
   factory RestClient(Dio dio,{String baseUrl}) = _RestClient;
@@ -44,6 +45,12 @@ abstract class RestClient{
 
   @POST('/Profile/register')
   Future<ResponseData<Profile>> registerProfile(@Body() Profile profile);
+
+  @GET('/Career/getListJobFromCarreId?careerId={careerId}')
+  Future<ResponseData<Job>> getListRecommendedByCareer(@Path("careerId") careerId);
+
+  @GET('/Career/getListJobFromArea?areaId={areaId}')
+  Future<ResponseData<Job>> getListRecommendedByArea(@Path("areaId") areaId);
 }
 
 class Api {
@@ -51,7 +58,7 @@ class Api {
   late RestClient clientUUID;
 
   Api() {
-    client = RestClient(API().dio, baseUrl: 'http://192.168.60.165/JobSearch/public/rest-api');
+    client = RestClient(API().dio, baseUrl: 'http://192.168.179.165/JobSearch/public/rest-api');
   }
 
   Api.clientUUID() {

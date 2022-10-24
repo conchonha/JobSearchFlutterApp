@@ -25,4 +25,7 @@ class Constants{
   static const KEY_PROFILE_CAREER = "keyProfileCareer";
   static const KEY_PROFILE_AREA = "keyProfileArea";
   static const KEY_PROFILE = "KeyProfile";
+  static const KEY_DETAIL_JOB = "detail_job";
+  static const KEY_JOB_ITEM_TYPE = "keyJobItemType";
+  static const KEY_ID = "keyID";
 }

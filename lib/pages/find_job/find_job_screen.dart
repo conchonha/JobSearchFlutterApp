@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_library/base/base_widget.dart';
 import 'package:flutter_library/base/common_list/common_list.dart';
 import 'package:untitled_folder/component/item_job.dart';
-import 'package:untitled_folder/model/job.dart';
+import 'package:untitled_folder/model/job/job.dart';
 import 'package:untitled_folder/res/app_color.dart';
 
 import '../../component/find_job/drawer_job.dart';

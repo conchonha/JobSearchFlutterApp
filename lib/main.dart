@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_library/res/dimens.dart';
 import 'package:flutter_library/utils/navigator_services.dart';
+import 'package:flutter_library/utils/shared_prefs.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:untitled_folder/pages/bottom_navigate/bottom_navigate_screen.dart';
 import 'package:untitled_folder/pages/introduce/introduce_screen.dart';
 import 'package:untitled_folder/res/app_color.dart';
 import 'package:untitled_folder/res/app_fonts.dart';
+import 'package:untitled_folder/utils/db_utils.dart';
 import 'package:untitled_folder/utils/locator_getit.dart';
 import 'package:untitled_folder/utils/routers.dart' as router;
 
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-
   setupLocator();
+
+  SharedPrefs();
+  await locator<DatabaseUtils>().databaseBuilder();
 
   runApp(MyApp());
 }

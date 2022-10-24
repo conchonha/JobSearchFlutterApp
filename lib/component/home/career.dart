@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_library/base/base_widget_model.dart';
 import 'package:flutter_library/base/common_list/common_list.dart';
+import 'package:flutter_library/res/dimens.dart';
 import 'package:untitled_folder/pages/home/home_viewmodel.dart';
 import 'package:untitled_folder/res/app_color.dart';
 import 'package:untitled_folder/res/app_style.dart';
@@ -15,14 +16,14 @@ class CareerWidget extends BaseWidgetModel<HomeViewModel>{
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.only(top: 15, left: 10),
+          padding: const EdgeInsets.only(top: AppDP.dp_15, left: AppDP.dp_10),
           child: Text(
             "Career",
             style: AppStyle.title,
           ),
         ),
         Container(
-          margin: const EdgeInsets.only(left: 10, right: 10),
+          margin: const EdgeInsets.only(left: AppDP.dp_10, right: AppDP.dp_10),
           child: GridView.builder(
             //scrollDirection: Axis.horizontal,
               physics: const NeverScrollableScrollPhysics(),
@@ -32,8 +33,8 @@ class CareerWidget extends BaseWidgetModel<HomeViewModel>{
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 //tính toán bố cục cho các ô trong lưới
                 crossAxisCount: 3, //so luong cot
-                crossAxisSpacing: 10, //khoang cach giua cac cot
-                mainAxisSpacing: 10, //khoang cach giua cac hang
+                crossAxisSpacing: AppDP.dp_10, //khoang cach giua cac cot
+                mainAxisSpacing: AppDP.dp_10, //khoang cach giua cac hang
               ),
               itemCount: widgetModel.listCareer.length,
               itemBuilder: (context, int index) => CommonListItem<Career>(widgetModel.listCareer[index], widgetModel.actionCareer, _ItemWidget())),
@@ -47,10 +48,11 @@ class _ItemWidget extends CommonItemWidget<Career>{
   @override
   Widget typeListArrowPreview() {
    return ClipRRect(
-      borderRadius: const BorderRadius.all(Radius.circular(5)),
+      borderRadius: const BorderRadius.all(Radius.circular(AppDP.dp_5)),
       child: MaterialButton(
-        elevation: 5,
+        elevation: AppDP.dp_5,
         onPressed: () {
+          iAction.onClickListener(commonData);
         },
         color: AppColor.backgroundcolor,
         splashColor: Colors.grey,
@@ -60,12 +62,12 @@ class _ItemWidget extends CommonItemWidget<Career>{
           children: <Widget>[
             Image.network(
              commonData.icon,
-              width: 50,
-              height: 50,
+              width: AppDP.dp_50,
+              height: AppDP.dp_50,
               fit: BoxFit.cover,
             ),
             Padding(
-              padding: const EdgeInsets.all(5),
+              padding: const EdgeInsets.all(AppDP.dp_5),
               child: Text(
                commonData.title,
                 style: AppStyle.small?.copyWith(color: Colors.white),

@@ -51,9 +51,9 @@ class ProfileViewModel extends BaseVM {
       notifyListeners();
     });
 
-    callApi<ResponseData<Area>>(_api.client.getListArea(), (p0) {
-      _listArea.addAll(p0.data);
-      p0.data.forEach((element) {
+    addStreamListener<List<Area>>(_dataProvider.listAreaStream, (p0){
+      _listArea.addAll(p0);
+      p0.forEach((element) {
         _listAreaDrop.add(element.name);
       });
       notifyListeners();
@@ -61,13 +61,10 @@ class ProfileViewModel extends BaseVM {
   }
 
   void _initValue() {
-    userInFor = sharedPrefs.getObject<User>(User.fromJson, Constants.KEY_USER);
-    _profile =
-        sharedPrefs.getObject<Profile>(Profile.fromJson, Constants.KEY_PROFILE);
-    _career = sharedPrefs.getObject<Career>(
-        Career.fromJson, Constants.KEY_PROFILE_CAREER);
-    _area =
-        sharedPrefs.getObject<Area>(Area.fromJson, Constants.KEY_PROFILE_AREA);
+     userInFor = sharedPrefs.getObject<User>(User.fromJson, Constants.KEY_USER);
+    _profile = sharedPrefs.getObject<Profile>(Profile.fromJson, Constants.KEY_PROFILE);
+    _career = sharedPrefs.getObject<Career>(Career.fromJson, Constants.KEY_PROFILE_CAREER);
+    _area = sharedPrefs.getObject<Area>(Area.fromJson, Constants.KEY_PROFILE_AREA);
 
     _listItem.addAll([
       ProfileData(_heightController,

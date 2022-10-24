@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:untitled_folder/res/app_color.dart';
+import 'package:untitled_folder/res/app_style.dart';
 
 AppBar largeAppbar({
   final bool? check,
@@ -11,18 +13,14 @@ AppBar largeAppbar({
   return AppBar(
     automaticallyImplyLeading: false,
     centerTitle: check == null ? true : false,
-    backgroundColor: Colors.white,
+    backgroundColor: AppColor.backgroundcolor,
     elevation: 1,
     brightness: Brightness.light,
     leading: childLeading ?? Container(),
      titleSpacing: check == 0.0 ? 0.0 : 0,
      title: check == null ? Text(
        title,
-       style: const TextStyle(
-         color: Colors.black,
-         fontSize: 17,
-         fontWeight: FontWeight.w500,
-       ),
+       style: AppStyle.title?.copyWith(color: AppColor.whiteColor),
      ) : newTitle,
     actions: [childActions ?? Container()],
   );

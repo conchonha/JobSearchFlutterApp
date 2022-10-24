@@ -3,7 +3,7 @@ import 'package:flutter_library/base/base_vm.dart';
 import 'package:flutter_library/base/common_list/common_data.dart';
 
 import '../../model/drawer.dart';
-import '../../model/job.dart';
+import '../../model/job/job.dart';
 import '../home/home_viewmodel.dart';
 
 class FindJobViewModel extends BaseVM{
@@ -15,12 +15,12 @@ class FindJobViewModel extends BaseVM{
       "Professional Scandinavian working environment that values innovation, creativity and new ideas along...";
 
   final listSearch = [
-    Job("Mobile", 15000000, _des,"https://www.clipartmax.com/png/middle/178-1788500_mobile-app-development-mobile-phone-round-logo.png"),
-    Job("Java", 25000000, _des,"https://www.clipartmax.com/png/middle/178-1788500_mobile-app-development-mobile-phone-round-logo.png"),
-    Job("Web", 25000000, _des,"https://www.clipartmax.com/png/middle/178-1788500_mobile-app-development-mobile-phone-round-logo.png"),
-    Job("Python", 15000000, _des,"https://www.clipartmax.com/png/middle/178-1788500_mobile-app-development-mobile-phone-round-logo.png"),
-    Job("Designed", 10000000, _des,"https://www.clipartmax.com/png/middle/178-1788500_mobile-app-development-mobile-phone-round-logo.png"),
-    Job("Test", 5000000, _des,"https://www.clipartmax.com/png/middle/178-1788500_mobile-app-development-mobile-phone-round-logo.png")
+    // Job("Mobile", 15000000, _des,"https://www.clipartmax.com/png/middle/178-1788500_mobile-app-development-mobile-phone-round-logo.png"),
+    // Job("Java", 25000000, _des,"https://www.clipartmax.com/png/middle/178-1788500_mobile-app-development-mobile-phone-round-logo.png"),
+    // Job("Web", 25000000, _des,"https://www.clipartmax.com/png/middle/178-1788500_mobile-app-development-mobile-phone-round-logo.png"),
+    // Job("Python", 15000000, _des,"https://www.clipartmax.com/png/middle/178-1788500_mobile-app-development-mobile-phone-round-logo.png"),
+    // Job("Designed", 10000000, _des,"https://www.clipartmax.com/png/middle/178-1788500_mobile-app-development-mobile-phone-round-logo.png"),
+    // Job("Test", 5000000, _des,"https://www.clipartmax.com/png/middle/178-1788500_mobile-app-development-mobile-phone-round-logo.png")
   ];
 
   final listDrawable = [

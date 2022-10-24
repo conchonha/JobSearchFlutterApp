@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled_folder/pages/bottom_navigate/bottom_navigate_viewmodel.dart';
 import 'package:untitled_folder/pages/profile/profile_viewmodel.dart';
+import 'package:untitled_folder/res/app_color.dart';
 import 'package:untitled_folder/res/app_style.dart';
 import 'package:untitled_folder/res/contains.dart' as Drawable;
 
@@ -31,6 +32,7 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                     Drawable.Drawable.ic_layer_left,
                     width: AppDP.dp_6,
                     height: AppDP.dp_11,
+                    color: AppColor.whiteColor,
                   ),
                 ),
               ),
@@ -40,11 +42,12 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                   margin: const EdgeInsets.only(right: AppDP.dp_24),
                   child: Consumer<ProfileViewModel>(
                     builder: (_, vm, child) => Material(
+                      color: AppColor.backgroundcolor,
                       child: InkWell(
                         onTap: vm.updateProfile,
                         child: Text(
                           "Update",
-                          style: AppStyle.small,
+                          style: AppStyle.small?.copyWith(color: AppColor.whiteColor),
                         ),
                       ),
                     ),
