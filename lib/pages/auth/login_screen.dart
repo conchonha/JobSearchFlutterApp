@@ -51,9 +51,8 @@ class LogInScreen extends StatelessWidget {
                             height: AppDP.dp_30,
                           ),
                           Text(
-                            'Hi Login',
-                            style:
-                                AppStyle.title?.copyWith(color: Colors.white),
+                            'Đăng Nhập',
+                            style: AppStyle.title?.copyWith(color: Colors.white),
                           )
                         ],
                       ),
@@ -169,7 +168,7 @@ class LogInScreen extends StatelessWidget {
                               minWidth: MediaQuery.of(context).size.width * 0.9,
                               child: Center(
                                 child: Text(
-                                  "Login",
+                                  "Đăng nhập",
                                   style: AppStyle.small
                                       ?.copyWith(color: Colors.white),
                                 ),
@@ -223,7 +222,7 @@ class LogInScreen extends StatelessWidget {
                             builder: (_, model, child) => GestureDetector(
                               onTap: model.onTapRegister,
                               child: Text(
-                                "Register",
+                                "Đăng ký",
                                 style: AppStyle.title
                                     ?.copyWith(color: AppColor.backgroundcolor),
                               ),

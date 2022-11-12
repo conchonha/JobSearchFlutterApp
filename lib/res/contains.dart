@@ -28,4 +28,5 @@ class Constants{
   static const KEY_DETAIL_JOB = "detail_job";
   static const KEY_JOB_ITEM_TYPE = "keyJobItemType";
   static const KEY_ID = "keyID";
+  static const KEY_IMAGE_AVATAR = "KEY_IMAGE_AVATAR";
 }

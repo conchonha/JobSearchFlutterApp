@@ -15,9 +15,16 @@ class JobStorageOrApplyViewModel extends BaseVM {
   final ActionJob actionJob = ActionJob();
   final _database = locator<DatabaseUtils>();
   final List<Job> listJob = [];
+   JobItemType? _jobItemType = null;
+   int? _id = null;
 
   @override
-  void onInit() {}
+  void onInit() {
+    actionJob.callback = (){
+      listJob.clear();
+      loadList(_jobItemType,_id);
+    };
+  }
 
   void backScreen() {
     navigator.pop();
@@ -25,6 +32,9 @@ class JobStorageOrApplyViewModel extends BaseVM {
 
   void loadList(JobItemType? jobItemType, int? id) {
     debugPrint("loadList jobItemType: $jobItemType --- id: $id");
+    _jobItemType = jobItemType;
+    _id = id;
+
     dynamic fucTmp;
     switch (jobItemType) {
       case JobItemType.TYPE_APPLY:

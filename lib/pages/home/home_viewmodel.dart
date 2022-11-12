@@ -31,10 +31,10 @@ class HomeViewModel extends BaseVM {
 
   User? userInFor;
   final listDrawable = [
-    DrawerData(Icons.account_circle_rounded, DrawerType.PROFILE, "Profile"),
-    DrawerData(Icons.save, DrawerType.JOB_STORAGE, "Job Storage"),
-    DrawerData(Icons.app_registration, DrawerType.JOB_APPLY, "Job Apply"),
-    DrawerData(Icons.logout, DrawerType.LOGOUT, "Logout"),
+    DrawerData(Icons.account_circle_rounded, DrawerType.PROFILE, "Hồ Sơ"),
+    DrawerData(Icons.save, DrawerType.JOB_STORAGE, "Công Việc Đã Lưu"),
+    DrawerData(Icons.app_registration, DrawerType.JOB_APPLY, "Công Việc Đã Ứng Tuyển"),
+    DrawerData(Icons.logout, DrawerType.LOGOUT, "Đăng Xuất"),
   ];
 
   @override
@@ -115,6 +115,7 @@ class ActionCareer extends CommonAction<Career> {
 }
 
 class ActionJob extends CommonAction<Job> {
+  VoidCallback? callback;
   final _db = locator<DatabaseUtils>().getDb();
 
   @override
@@ -127,6 +128,7 @@ class ActionJob extends CommonAction<Job> {
   void onDelete(Job data) async{
     super.onDelete(data);
     await _db.jobDao.deleteItem(data);
-    showToast("Remove ${data.title} successfully");
+    showToast("Xoá ${data.title} thành công");
+    callback?.call();
   }
 }

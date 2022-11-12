@@ -18,11 +18,11 @@ class BottomNavigatorLayout extends StatelessWidget {
                 unselectedItemColor: Colors.black,
                 items: const [
                   BottomNavigationBarItem(
-                      icon: Icon(Icons.home), label: "Home"),
+                      icon: Icon(Icons.home), label: "Trang Chủ"),
                   BottomNavigationBarItem(
-                      icon: Icon(Icons.supervisor_account), label: "Find"),
+                      icon: Icon(Icons.supervisor_account), label: "Tìm Kiếm"),
                   BottomNavigationBarItem(
-                      label: "Account", icon: Icon(Icons.select_all))
+                      label: "Cài Đặt", icon: Icon(Icons.select_all))
                 ],
                 currentIndex: vm.selectIndex,
                 onTap: vm.setPageIndex,

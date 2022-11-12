@@ -18,7 +18,7 @@ class CareerWidget extends BaseWidgetModel<HomeViewModel>{
         Padding(
           padding: const EdgeInsets.only(top: AppDP.dp_15, left: AppDP.dp_10),
           child: Text(
-            "Career",
+            "Nghề Nghiệp",
             style: AppStyle.title,
           ),
         ),

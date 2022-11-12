@@ -7,6 +7,7 @@ import 'package:untitled_folder/model/profile/profile.dart';
 import 'package:untitled_folder/model/profile_data.dart';
 import 'package:untitled_folder/model/response/home/response_data.dart';
 import 'package:untitled_folder/res/contains.dart';
+import 'package:untitled_folder/utils/extension.dart';
 import 'package:untitled_folder/utils/routers.dart';
 
 import '../../component/profile/profile_widget.dart';
@@ -42,6 +43,8 @@ class ProfileViewModel extends BaseVM {
   final List<Area> _listArea = [];
   final List<String> _listAreaDrop = ["Area"];
 
+  String? get getAvatarPath => sharedPrefs.get<String>(Constants.KEY_IMAGE_AVATAR);
+
   void _listenerSteam() {
     addStreamListener<List<Career>>(_dataProvider.listCareerStream, (p0) {
       _listCareer.addAll(p0);
@@ -66,50 +69,54 @@ class ProfileViewModel extends BaseVM {
     _career = sharedPrefs.getObject<Career>(Career.fromJson, Constants.KEY_PROFILE_CAREER);
     _area = sharedPrefs.getObject<Area>(Area.fromJson, Constants.KEY_PROFILE_AREA);
 
+    fechList();
+    notifyListeners();
+  }
+
+  void fechList(){
+    _listItem.clear();
     _listItem.addAll([
       ProfileData(_heightController,
-          _profile?.height.toString() ?? "Enter Height", "Height:",
+          "Chiều cao", _profile?.height?.toString().plush(" m") ?? "Chiều cao",
           textInputType: TextInputType.number),
       ProfileData(_weightController,
-          _profile?.weight?.toString() ?? "Enter Weight", "Weight",
+          "Cân nặng", _profile?.weight?.toString().plush(" Kg") ?? "Cân nặng",
           textInputType: TextInputType.number),
       ProfileData(_experienceController,
-          _profile?.experience ?? "Enter Experience", "Experience:"),
+          "Kinh nghiệm", _profile?.experience?.plush(" Year") ?? "Kinh Nghiệm",textInputType: TextInputType.number),
       ProfileData(_schoolsNameController,
-          _profile?.schoolsName ?? "Enter Schools Name", "Schools Name:"),
+          "Thông tin khác", _profile?.schoolsName?? "Thông tin khác"),
       ProfileData(_proofLetterController,
-          _profile?.proofLetter ?? "Enter Proof Letter", "Proof Letter:",
+          "Số chứng minh", _profile?.proofLetter?? "Số chứng minh",
           textInputType: TextInputType.number),
-      ProfileData(_interestsController, _profile?.interests ?? "Enter Interest",
-          "Interest:"),
-      ProfileData(_homeTownController, _profile?.homeTown ?? "Enter Home Town",
-          "Home Town:"),
+      ProfileData(_interestsController,
+          "Sở thích",_profile?.interests ?? "Sở thích"),
+      ProfileData(_homeTownController,
+          "Quê hương",_profile?.homeTown ?? "Quê hương"),
       ProfileData(
           _educationLevelController,
-          _profile?.educationLevel ?? "Enter Education Level",
-          "Education Level:"),
-      ProfileData(
-          _specialConditionsController,
-          _profile?.specialConditions ?? "Enter Special Conditions",
-          "Special Conditions"),
+          "Trình độ",_profile?.educationLevel ?? "Trình độ"),
       ProfileData(_salaryController,
-          _profile?.salary?.toString() ?? "Enter Salary", "Salary:",
+          "Lương",_profile?.salary?.toString().plush(" Vnđ") ?? "Lương",
           textInputType: TextInputType.number),
       ProfileData(
-          _jobInformationController,
-          _profile?.jobInformation ?? "Enter Job Information",
-          "Job Information:"),
+        _jobInformationController,
+        "Thông tin công việc",
+        _profile?.jobInformation ?? "Thông tin công việc",),
       ProfileData.TypeDrop((value) {
         _areaDropDownChangeValue(value);
         return _listAreaDrop;
-      }, _area?.name ?? "Area"),
+      }, _area?.name ?? "Nghề nghiệp"),
       ProfileData.TypeDrop((value) {
         _careerDropDownChange(value);
         return _listCareerDrop;
-      }, _career?.title ?? "Career Aspirations"),
+      }, _career?.title ?? "Nguyện vọng nghề nghiệp"),
+      ProfileData(
+          _specialConditionsController,
+          "Điều kiện đặc biệt",
+          _profile?.specialConditions ?? "Điều kiện đặc biệt"),
     ]);
 
-    notifyListeners();
   }
 
   List<Widget> get listItems => _listItem.map((e) {
@@ -161,10 +168,13 @@ class ProfileViewModel extends BaseVM {
     callApi<ResponseData<Profile>>(_api.registerProfile(profile), (p0) {
       debugPrint("updateProfile success: $p0");
       sharedPrefs.push(key: Constants.KEY_PROFILE, value: p0.data[0]);
+      _profile = p0.data[0];
+      fechList();
+      notifyListeners();
     });
   }
 
-  void _areaDropDownChangeValue(String? value) {
+  void _areaDropDownChangeValue(String? value) async{
     debugPrint("_areaDropDownChangeValue value: $value");
     _listArea.forEach((element) {
       if (value == element.name) {
@@ -174,6 +184,6 @@ class ProfileViewModel extends BaseVM {
   }
 
   void backProfileScreen() {
-    navigator.pushNameAndRemoveUtil(RouterName.bottom_navigator_screen, RouterName.bottom_navigator_screen);
+    navigator.pop();
   }
 }

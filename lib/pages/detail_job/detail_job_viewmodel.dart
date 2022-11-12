@@ -19,17 +19,17 @@ class DetailJobViewModel extends BaseVM{
   void setJob(Job value){
     job = value;
     listItemStart.addAll([
-      {"Salary" : job.price},
-      {"Amount" : job.amount},
-      {"Age" : job.age},
-      {"Gender" : job.gender == 0? "Nam" : "Nữ"},
+      {"Lương" : job.price},
+      {"Số Lượng" : job.amount},
+      {"Tuổi" : job.age},
+      {"Giới Tính" : job.gender == 0? "Nam" : "Nữ"},
     ]);
 
     listItemEnd.addAll([
-      {"Area": ""},
-      {"Experience" : job.experience},
-      {"EnglishLevel" : job.englishLevel.convertEngListLevel},
-      {"Other" : job.description}
+      {"Khu Vực": ""},
+      {"Kinh Nghiệm" : job.experience},
+      {"Trình Độ Tiếng Anh" : job.englishLevel.convertEngListLevel},
+      {"Thông Tin Khác" : job.description}
     ]);
     notifyListeners();
   }
@@ -39,7 +39,7 @@ class DetailJobViewModel extends BaseVM{
     addStreamListener<List<Area>>(_dataProvider.listAreaStream, (p0){
       p0.forEach((element) {
         if(job.areaId == element.id){
-          listItemEnd.first["Area"] = element.name;
+          listItemEnd.first["Khu Vực"] = element.name;
           notifyListeners();
         }
       });
@@ -49,13 +49,13 @@ class DetailJobViewModel extends BaseVM{
   void saveJobLocal() async{
     job.applyJob = true;
     await _database.getDb().jobDao.insertItem(job);
-    showToast("Save job success", position: ToastPosition.bottom);
+    showToast("Lưu Thành Công", position: ToastPosition.bottom);
   }
 
   void saveJobApply() async{
     job.saveJob = true;
     await _database.getDb().jobDao.insertItem(job);
-    showToast("Apply job success", position: ToastPosition.bottom);
+    showToast("Ứng Tuyển Thành Công", position: ToastPosition.bottom);
   }
 
   void backScreen() {

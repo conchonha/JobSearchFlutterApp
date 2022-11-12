@@ -15,3 +15,12 @@ extension NumberExt on num{
   }
 }
 
+extension StringExt on String?{
+  String? plush(String str){
+    if(this?.isNotEmpty == true){
+      var value = this! + str;
+      return value;
+    }
+    return null;
+  }
+}

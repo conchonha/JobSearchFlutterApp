@@ -73,7 +73,7 @@ class Api {
   late RestClient clientUUID;
 
   Api() {
-    client = RestClient(API().dio, baseUrl: 'http://192.168.179.165/JobSearch/public/rest-api');
+    client = RestClient(API().dio, baseUrl: 'http://192.168.0.100/JobSearch/public/rest-api');
   }
 
   Api.clientUUID() {

@@ -1,9 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_library/base/base_widget.dart';
 import 'package:flutter_library/res/dimens.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
-import 'package:untitled_folder/pages/bottom_navigate/bottom_navigate_viewmodel.dart';
 import 'package:untitled_folder/pages/profile/profile_viewmodel.dart';
 import 'package:untitled_folder/res/app_color.dart';
 import 'package:untitled_folder/res/app_style.dart';
@@ -25,6 +26,7 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
         viewmodel: ProfileViewModel(),
         child: Scaffold(
           appBar: largeAppbar(
+            colors: AppColor.whiteColor,
               childLeading: Consumer<ProfileViewModel>(
                 builder: (_, vm, child) => IconButton(
                   onPressed: vm.backProfileScreen,
@@ -32,28 +34,12 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                     Drawable.Drawable.ic_layer_left,
                     width: AppDP.dp_6,
                     height: AppDP.dp_11,
-                    color: AppColor.whiteColor,
+                    color: AppColor.blackColor,
                   ),
                 ),
               ),
-              title: "My Profile",
-              childActions: Center(
-                child: Container(
-                  margin: const EdgeInsets.only(right: AppDP.dp_24),
-                  child: Consumer<ProfileViewModel>(
-                    builder: (_, vm, child) => Material(
-                      color: AppColor.backgroundcolor,
-                      child: InkWell(
-                        onTap: vm.updateProfile,
-                        child: Text(
-                          "Update",
-                          style: AppStyle.small?.copyWith(color: AppColor.whiteColor),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              )),
+              title: "Hồ Sơ Người Dùng",
+              ),
           body: SingleChildScrollView(
             child: _getContent,
           ),
@@ -73,15 +59,11 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    ClipRRect(
-                        borderRadius: const BorderRadius.all(
-                            Radius.circular(AppDP.dp_50)),
-                        child: Image.asset(
-                          Drawable.Drawable.ic_avatar_default,
-                          width: AppDP.dp_100,
-                          height: AppDP.dp_100,
-                          fit: BoxFit.fill,
-                        )),
+                    CircleAvatar(
+                      backgroundImage: model.getAvatarPath != null? FileImage(File(model.getAvatarPath!)) : null,
+                      radius: 50,
+                      backgroundColor: Colors.black,
+                    ),
                     const SizedBox(
                       height: AppDP.dp_8,
                     ),
@@ -102,7 +84,32 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
               const SizedBox(
                 height: AppDP.dp_24,
               ),
-              ...model.listItems
+              ...model.listItems,
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 40,vertical: 20),
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(20))
+                ),
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.all(Radius.circular(30)),
+                  child: MaterialButton(
+                    color: Colors.deepPurple,
+                    onPressed: (){
+                      model.updateProfile();
+                    },
+                    elevation: AppDP.dp_5,
+                    height: AppDP.dp_50,
+                    hoverColor: Colors.blue,
+                    child: Center(
+                      child: Text(
+                        "Cập nhật thông tin",
+                        style: AppStyle.small
+                            ?.copyWith(color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ),
+              )
             ],
           );
         },

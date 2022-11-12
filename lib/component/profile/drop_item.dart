@@ -47,7 +47,7 @@ class _DropDownItemState extends State<DropDownItem> {
         });
         widget.callback?.call(textChange);
       },
-      underline: Container(width: AppDP.dp_100,color: Colors.black.withAlpha(80),height: AppDP.dp_1,),
+      underline: const SizedBox.shrink(),
     ),);
   }
 }

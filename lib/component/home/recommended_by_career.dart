@@ -25,8 +25,8 @@ class RecommendedByCareer extends BaseWidgetModel<HomeViewModel> {
         children: [
           Text(
             checkRecommendedByCareer
-                ? "Recommended By Career"
-                : "Recommended By Region",
+                ? "Giới Thiệu Theo Nghề"
+                : "Giới ThiệuTheo Khu Vực",
             style: AppStyle.title,
           ),
           ...widgetModel.getListRecommendedBy(checkRecommendedByCareer)

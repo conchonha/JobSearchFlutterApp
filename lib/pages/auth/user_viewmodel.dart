@@ -90,7 +90,7 @@ class UserViewModel extends BaseVM {
                 value.userInfor.userUUIDInfo.userName,
                 emailController.text.trim(),
                 )), (userResponse) {
-          showToast("Register success", position: ToastPosition.bottom);
+          showToast("Đăng Ký Thành Công", position: ToastPosition.bottom);
           navigator.pushNameAndRemoveUtil(RouterName.login_screen,
               RouterName.login_screen);
         });

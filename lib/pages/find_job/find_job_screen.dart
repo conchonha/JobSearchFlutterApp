@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_library/base/base_widget.dart';
 import 'package:flutter_library/base/common_list/common_list.dart';
+import 'package:flutter_library/res/dimens.dart';
 import 'package:untitled_folder/component/item_job.dart';
 import 'package:untitled_folder/model/job/job.dart';
 import 'package:untitled_folder/res/app_color.dart';
@@ -35,9 +36,9 @@ class FindJobScreen extends StatelessWidget {
                     .width, // Background
                 child: const Center(
                   child: Text(
-                    "Search Option",
+                    "Lọc Kết Quả Tìm Kiếm",
                     style: TextStyle(
-                        fontSize: 25.0,
+                        fontSize: AppSP.sp_25,
                         fontWeight: FontWeight.w600,
                         color: Colors.white),
                   ),
@@ -76,8 +77,8 @@ class FindJobScreen extends StatelessWidget {
                     .of(context)
                     .size
                     .height * 0.17,
-                left: 20.0,
-                right: 20.0,
+                left: AppDP.dp_20,
+                right: AppDP.dp_20,
                 child: AppBar(
                   backgroundColor: Colors.white,
                   leading: GestureDetector(
@@ -93,7 +94,7 @@ class FindJobScreen extends StatelessWidget {
                   title: Consumer<FindJobViewModel>(builder: (_, vm, child) => TextField(
                       onChanged: vm.onTextChange,
                       decoration: const InputDecoration(
-                          hintText: "Search",
+                          hintText: "Tìm Kiếm",
                           border: InputBorder.none,
                           hintStyle: TextStyle(color: Colors.grey))),
                   ),

@@ -25,7 +25,7 @@ class HomeScreen extends StatelessWidget {
               //một thanh công cụ động mà khi chúng tôi trượt nó sẽ hiển thị nội dung
               SliverAppBar(
                 backgroundColor: AppColor.backgroundcolor,
-                title: const Text("Home page"),
+                title: const Text("Trang Chủ"),
                 centerTitle: true,
                 expandedHeight: AppDP.dp_200,
                 //Thanh ứng dụng vẫn có thể mở rộng và co lại khi người dùng cuộn, nhưng nó sẽ vẫn hiển thị thay vì được cuộn ra khỏi tầm nhìn.

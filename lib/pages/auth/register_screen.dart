@@ -52,7 +52,7 @@ class Register extends StatelessWidget {
                             height: AppDP.dp_30,
                           ),
                           Text(
-                            'Hi Register',
+                            'Đăng Ký Tài ',
                             style:
                                 AppStyle.title?.copyWith(color: Colors.white),
                           )
@@ -100,7 +100,7 @@ class Register extends StatelessWidget {
                               minWidth: MediaQuery.of(context).size.width * 0.9,
                               child: Center(
                                 child: Text(
-                                  "Register",
+                                  "Đăng Ký",
                                   style: AppStyle.small
                                       ?.copyWith(color: Colors.white),
                                 ),
@@ -182,7 +182,7 @@ class _FormRegister extends BaseWidgetModel<UserViewModel> {
               validator: widgetModel.validateUserName,
               keyboardType: TextInputType.name,
               style: AppStyle.small,
-              decoration: AppStyle.textFielInputDecoration("Tên Đăng Nhap"),
+              decoration: AppStyle.textFielInputDecoration("Tên Đăng Nhập"),
             ),
           ),
           const SizedBox(

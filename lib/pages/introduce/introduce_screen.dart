@@ -112,7 +112,7 @@ class _IntroduceChild extends BaseWidgetModel<IntroduceViewModel> {
                 onTap: () {
                   Navigator.pushNamed(context, RouterName.login_screen);
                 },
-                child: Text("Skip", style: AppStyle.title),
+                child: Text("Bỏ Qua", style: AppStyle.title),
               ))
       ],
     );

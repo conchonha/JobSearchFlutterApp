@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:untitled_folder/component/settings/webview.dart';
 import 'package:untitled_folder/model/job/job.dart';
 import 'package:untitled_folder/pages/auth/login_screen.dart';
 import 'package:untitled_folder/pages/auth/register_screen.dart';
@@ -16,6 +17,7 @@ class RouterName {
   static const profile_screen = '/profile_screen';
   static const detail_job_screen = '/detail_job_screen';
   static const job_save_or_apply_screen = '/job_save_or_apply_screen';
+  static const WEBVIEW_CLIENT_SCREEN = '/WEBVIEW_CLIENT_SCREEN';
 }
 
 Route<dynamic>? routeSetting(RouteSettings settings) {
@@ -34,6 +36,8 @@ Route<dynamic>? routeSetting(RouteSettings settings) {
     case RouterName.job_save_or_apply_screen:
       final agr = settings.arguments as Map<String,dynamic>;
       return _navigate(JobStorageOrApplyScreen(jobItemType: agr[Constants.KEY_JOB_ITEM_TYPE],id: agr[Constants.KEY_ID],));
+    case RouterName.WEBVIEW_CLIENT_SCREEN:
+      return _navigate(const WebViewClient());
   }
   throw ("Not found route name, please check again");
 }

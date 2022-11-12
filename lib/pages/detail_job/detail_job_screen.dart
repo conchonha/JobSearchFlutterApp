@@ -15,7 +15,7 @@ import 'package:provider/provider.dart';
 class DetailJobScreen extends StatelessWidget {
   final Job job;
 
-  const DetailJobScreen(this.job, {Key? key}) : super(key: key);
+  DetailJobScreen(this.job, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class DetailJobScreen extends StatelessWidget {
                 ),
               ),
             ),
-            title: "Detail Job",
+            title: "Thông Tin Công Việc:",
           ),
           body: SingleChildScrollView(child: _ContentWidget()),
         ));
@@ -44,6 +44,7 @@ class DetailJobScreen extends StatelessWidget {
 }
 
 class _ContentWidget extends BaseWidgetModel<DetailJobViewModel> {
+
   @override
   Widget build(BuildContext context, DetailJobViewModel widgetModel) {
     return Column(
@@ -92,7 +93,7 @@ class _ContentWidget extends BaseWidgetModel<DetailJobViewModel> {
                   SizedBox(
                     width: double.infinity,
                     child: Text(
-                      "Information Job",
+                      "Thông Tin Công Việc:",
                       textAlign: TextAlign.center,
                       style:
                           AppStyle.title?.copyWith(fontWeight: FontWeight.bold),
@@ -131,30 +132,34 @@ class _ContentWidget extends BaseWidgetModel<DetailJobViewModel> {
             padding:
                 const EdgeInsets.only(left: AppDP.dp_20, bottom: AppDP.dp_10),
             child: Text(
-              "Other Information: ",
+              "Chi Tiết: ",
               style: AppStyle.small?.copyWith(
                   fontWeight: FontWeight.bold,
                   decoration: TextDecoration.underline),
             )),
         Container(
+          width: MediaQuery.of(context).size.width,
           padding: const EdgeInsets.symmetric(horizontal: AppDP.dp_10),
           margin: const EdgeInsets.symmetric(horizontal: AppDP.dp_20),
           decoration: BoxDecoration(
               border: Border.all(color: AppColor.blackColor),
               borderRadius:
                   const BorderRadius.all(Radius.circular(AppDP.dp_4))),
-          child: Row(
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ...widgetModel.listItemEnd
-                      .map((e) =>
-                          textItem(e.keys.first, e.values.first.toString()))
-                      .toList()
-                ],
-              )
-            ],
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ...widgetModel.listItemEnd
+                        .map((e) =>
+                            textItem(e.keys.first, e.values.first.toString()))
+                        .toList()
+                  ],
+                )
+              ],
+            ),
           ),
         )
       ],
@@ -162,23 +167,27 @@ class _ContentWidget extends BaseWidgetModel<DetailJobViewModel> {
   }
 
   Widget textItem(String title, String content) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: AppDP.dp_5),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            "$title:    ",
-            style: AppStyle.small?.copyWith(fontWeight: FontWeight.bold),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: AppDP.dp_2),
-            child: Text(
-              content,
-              style: AppStyle.medium,
+    return SizedBox(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: AppDP.dp_5),
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "$title:    ",
+              style: AppStyle.small?.copyWith(fontWeight: FontWeight.bold),
             ),
-          )
-        ],
+            Padding(
+              padding: const EdgeInsets.only(top: AppDP.dp_2),
+              child: Text(
+                content,
+                style: AppStyle.medium?.copyWith(),
+                overflow: TextOverflow.ellipsis,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
